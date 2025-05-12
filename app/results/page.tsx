@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 
 import { useSearchParams, useRouter } from 'next/navigation'
 import { questions } from '../questions'
