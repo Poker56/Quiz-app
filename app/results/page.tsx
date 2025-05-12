@@ -56,7 +56,7 @@ export default function ResultsPage() {
           <div className="space-y-6">
             {questions.map((q, i) => {
               const selectedIndex = answers[i]
-              const correctIndex = q.options.findIndex((opt) => opt.correct)
+            
 
               return (
                 <div key={i} className="bg-gray-800 p-5 rounded-lg shadow-md">
