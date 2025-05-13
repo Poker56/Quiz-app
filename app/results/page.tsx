@@ -1,11 +1,11 @@
-'use client';
-
+'use client'
 
 import { useSearchParams, useRouter } from 'next/navigation'
 import { questions } from '../questions'
 import { useEffect, useState } from 'react'
+import { Suspense } from 'react'
 
-export default function ResultsPage() {
+function ResultsClient() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const [answers, setAnswers] = useState<number[]>([])
@@ -32,7 +32,8 @@ export default function ResultsPage() {
         <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
           <h1 className="text-3xl font-bold mb-2">🎉 Quiz Completed!</h1>
           <p className="text-lg text-gray-300 mb-4">
-            You scored <span className="text-white font-semibold">{score}</span> out of{' '}
+            You scored{' '}
+            <span className="text-white font-semibold">{score}</span> out of{' '}
             {questions.length}
           </p>
 
@@ -57,7 +58,6 @@ export default function ResultsPage() {
           <div className="space-y-6">
             {questions.map((q, i) => {
               const selectedIndex = answers[i]
-            
 
               return (
                 <div key={i} className="bg-gray-800 p-5 rounded-lg shadow-md">
@@ -95,5 +95,14 @@ export default function ResultsPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+// ✅ Wrap in Suspense to fix build error
+export default function ResultsPageWrapper() {
+  return (
+    <Suspense fallback={<div className="text-white p-4">Loading results...</div>}>
+      <ResultsClient />
+    </Suspense>
   )
 }
