@@ -24,8 +24,8 @@ export const questions: Question[] = [
     id: 2,
     question: 'Which planet is known as the life Planet?',
     options: [
-      { text: 'Mars', correct: true },
-      { text: 'Earth',  },
+      { text: 'Earth', correct: true },
+      { text: 'Venus',  },
       { text: 'Mars' },
       { text: 'Jupiter' },
     ],
